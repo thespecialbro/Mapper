@@ -38,9 +38,9 @@ public class Node
 
     // Getters
 
-    int getType() {return type;}
+    int getType() { return type; }
 
-    public ArrayList<Node> getConnections() {return connections;}
+    public ArrayList<Node> getConnections() { return connections; }
 
 
     // Setters
@@ -48,18 +48,12 @@ public class Node
     /**
      * @param type What type of node this is
      */
-    void setType(int type)
-    {
-        this.type = type;
-    }
+    void setType(int type) { this.type = type; }
 
     /**
      * @param other The node which this one is connecting to
      */
-    void addConnection(Node other)
-    {
-        connections.add(other);
-    }
+    void addConnection(Node other) { connections.add(other); }
 
 
     // Misc
@@ -70,15 +64,14 @@ public class Node
     String sayType()
     {
         String temp = "X";
-        if(type == UNSET) {
+        if(type == UNSET)
              temp = "-";
-        } else if(type == START) {
+        else if(type == START)
             temp = "S";
-        } else if(type == MID) {
+        else if(type == MID)
             temp = "M";
-        } else if(type == END) {
+        else if(type == END)
             temp = "E";
-        }
         return temp;
     }
 }

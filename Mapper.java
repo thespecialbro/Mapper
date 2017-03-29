@@ -23,54 +23,20 @@ public class Mapper
         queue = new Node[map.getSize()];
     }
 
-    public String toString()
-    {
-        return map.toString();
-    }
+    public String toString() { return map.toString(); }
+
 
     // Getters
 
     /**
      * @return The queue of nodes to path through
      */
-    public Node[] getQueue()
-    {
-        //updateQueue();
-        return queue;
-    }
+    public Node[] getQueue() { return queue; }
 
-    /**
-     * @param x x-coordinate of a node
-     * @param y y-coordinate of a node
-     * @return The node at (x, y) on the grid
-     */
-    public Node get(int x, int y)
-    {
-        return map.getNode(x, y);
-    }
+    public Grid get() { return map; }
 
 
     // Setters
-
-    /**
-     * @param x x-coordinate of a node
-     * @param y y-coordinate of a node
-     * @param other The node which to connect to the selected node
-     */
-    public void addConnection(int x, int y, Node other)
-    {
-        map.addConnection(x, y, other);
-    }
-
-    /**
-     * @param x x-coordinate of a node
-     * @param y y-coordinate of a node
-     * @param type The type to set the node to
-     */
-    public void setType(int x, int y, int type)
-    {
-        map.setType(x, y, type);
-    }
 
 
     // Misc
@@ -78,10 +44,22 @@ public class Mapper
     public Node[] makePath()
     {
         //updateQueue();
-        /*for(Node i: queue)
-        {
+        Node[] newQueue = new Node[queue.length];
 
-        }*/
+        // Put the start at the start of the queue
+        Node start = queue[0];
+        Node end = queue[0];
+        for(Node i: queue)
+        {
+            if(i.getType() == 0)
+                start = i;
+            if(i.getType() == 2)
+                end = i;
+        }
+        newQueue[0] = start;
+
+
+
         return queue;
     }
 

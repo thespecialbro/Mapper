@@ -37,25 +37,9 @@ public class Grid
 
     // Getters
 
-    public int getSize()
-    {
-        return SIZE;
-    }
+    public int getSize() { return SIZE; }
 
-    public String sayType(int x, int y)
-    {
-        return grid[x][y].sayType();
-    }
-
-    public int getType(int x, int y)
-    {
-        return grid[x][y].getType();
-    }
-
-    public Node getNode(int x, int y)
-    {
-        return grid[x][y];
-    }
+    public Node getNode(int x, int y) { return grid[x][y]; }
 
     public Node[] getNodes()
     {
@@ -78,45 +62,45 @@ public class Grid
         grid[x][y].setType(type);
     }
 
-    /**
-     * @param x Row of the node to select
-     * @param y Column of the node to select
-     * @param other The node which to connect to the selected node
-     */
-    public void addConnection(int x, int y, Node other)
-    {
-        grid[x][y].addConnection(other);
-    }
-
 
     // Misc
 
     /**
      * @param str An array of strings where each string is a row
      * @return A grid that matches the array of strings
+     *
+     * Make a grid object from an array of strings matching the basic idea of
+     * "S----M----",
+     * "----------",
+     * "----------",
+     * "----------",
+     * "----------",
+     * "M----M---M",
+     * "----------",
+     * "----------",
+     * "----------",
+     * "-----M---E"
+     * where S is the start node, M's are the intermediate nodes,
+     * and E is the end node. All other characters are considered
+     * unset-type nodes
      */
     public static Grid makeFromText(String[] str)
     {
         Grid a = new Grid();
         String s;
         char c;
-        int l;
         for(int i = 0; i < str.length; i++)
         {
             s = str[i];
             for(int j = 0; j < s.length(); j++)
             {
-                l = j;
                 c = Character.toUpperCase(s.charAt(j));
-                if(c == ' ') {
-                    l--;
-                } else if(c == 'S') {
-                    a.setType(i, l, 0);
-                } else if(c == 'M') {
-                    a.setType(i, l, 1);
-                } else if(c == 'E') {
-                    a.setType(i, l, 2);
-                }
+                if(c == 'S')
+                    a.setType(i, j, 0);
+                else if(c == 'M')
+                    a.setType(i, j, 1);
+                else if(c == 'E')
+                    a.setType(i, j, 2);
             }
         }
         return a;
